@@ -1,0 +1,65 @@
+---
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+const images = [
+  {
+    url: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d",
+    alt: "Estudiantes en el aula",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1509062522246-3755977927d7",
+    alt: "Actividades deportivas",
+  },
+  {
+    url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b",
+    alt: "Campus escolar",
+  },
+];
+---
+
+<div class="relative h-[600px] w-full overflow-hidden">
+  <div class="swiper-container h-full">
+    {images.map((image) => (
+      <div class="swiper-slide">
+        <img
+          src={image.url}
+          alt={image.alt}
+          class="w-full h-full object-cover"
+        />
+      </div>
+    ))}
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-r from-monte-carlo-950/50 to-transparent flex items-center">
+    <div class="container mx-auto px-4">
+      <h1 class="text-5xl font-bold text-white mb-4">
+        Colegio Paula Montal
+      </h1>
+      <p class="text-xl text-white/90 max-w-xl">
+        Formando líderes del mañana con valores, excelencia académica y compromiso social
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+  
+  new Swiper('.swiper-container', {
+    modules: [Navigation, Pagination, Autoplay],
+    loop: true,
+    autoplay: {
+      delay: 5000,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>

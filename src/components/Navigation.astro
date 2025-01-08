@@ -1,0 +1,43 @@
+---
+const links = [
+  { text: "Colegio", href: "/colegio" },
+  { text: "Formación", href: "/formacion" },
+  { text: "Bienestar", href: "/bienestar" },
+  { text: "Comunidad", href: "/comunidad" },
+  { text: "Comunicaciones", href: "/comunicaciones" },
+  { text: "Circulares", href: "/circulares" },
+  { text: "Contáctenos", href: "/contacto" },
+];
+---
+
+<header class="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
+  <nav class="relative w-full bg-gradient-to-r from-[#d6f1ec] to-[#d6f1ec] px-4 py-4 shadow-md">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-x-2">
+        <img src="/C.Paula_Montal.png" height="80" width="80" alt="Logo del colegio Paula Montal" />
+        <a href="/" class="text-2xl font-bold text-monte-carlo-600">
+          Paula Montal
+        </a>
+      </div>     
+      
+      <div class="hidden md:flex space-x-6">
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class="text-monte-carlo-900 hover:text-monte-carlo-500 transition-colors font-bold"
+            >
+              {link.text}
+            </a>
+          ))
+        }
+      </div>
+
+      <button class="md:hidden text-monte-carlo-600">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+</header>
