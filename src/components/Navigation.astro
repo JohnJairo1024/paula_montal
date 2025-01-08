@@ -8,6 +8,9 @@ const links = [
   { text: "Circulares", href: "/circulares" },
   { text: "Contáctenos", href: "/contacto" },
 ];
+
+// Importamos los estilos de la transición
+import { fade } from 'astro:transitions';
 ---
 
 <header class="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
@@ -25,9 +28,12 @@ const links = [
           links.map((link) => (
             <a
               href={link.href}
-              class="text-monte-carlo-900 hover:text-monte-carlo-500 transition-colors font-bold"
+              class="relative text-monte-carlo-900 hover:text-monte-carlo-500 group transition-colors duration-300 font-bold"
+              transition:animate={fade({ duration: '0.5s' })}
             >
               {link.text}
+              <span class="absolute left-0 -bottom-1 w-0 h-0.5 bg-monte-carlo-500 transition-all duration-300 group-hover:w-full"></span>
+              <span class="absolute left-0 -top-1 w-0 h-0.5 bg-monte-carlo-500 transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))
         }
@@ -41,3 +47,39 @@ const links = [
     </div>
   </nav>
 </header>
+
+<style>
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  a {
+    position: relative;
+    overflow: hidden;
+  }
+
+  a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(214, 241, 236, 0.2),
+      transparent
+    );
+    transition: 0.5s;
+  }
+
+  a:hover::before {
+    left: 100%;
+  }
+</style>
